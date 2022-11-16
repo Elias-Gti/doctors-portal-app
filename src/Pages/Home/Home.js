@@ -1,6 +1,8 @@
 import React from 'react';
 import Banner from './Banner/Banner';
+import Expectional from './Expectional/Expectional';
 import InfoCards from './InfoCards/InfoCards';
+import MakeAppointment from './MakeAppointment/MakeAppointment';
 import Services from './Services/Services/Services';
 
 
@@ -10,6 +12,8 @@ const Home = () => {
             <Banner></Banner>
             <InfoCards></InfoCards>
             <Services></Services>
+            <Expectional></Expectional>
+            <MakeAppointment></MakeAppointment>
         </div>
     );
 };

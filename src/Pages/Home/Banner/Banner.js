@@ -1,16 +1,20 @@
 import React from 'react';
+import chair from '../../../assets/images/chair.png';
+import bg from '../../../assets/images/bg.png';
+
 
 const Banner = () => {
     return (
-        <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <img src="https://placeimg.com/260/400/arch" alt='' className="max-w-sm rounded-lg shadow-2xl" />
-          <div>
+        <div className="hero " style={{ backgroundImage: `url(${bg})` }}>
+        <div className="hero-content flex-col py-20 lg:flex-row-reverse">
+          <img src={chair} alt='' className="w-1/2  shadow-2xl" />
+          <div className='w-1/2'>
             <h1 className="text-5xl font-bold">Box Office News!</h1>
             <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-            <button className="btn btn-primary">Get Started</button>
+            <button className="h-14 btn btn-primary text-white bg-gradient-to-r from-primary to-secondary">Get Started</button>
           </div>
         </div>
+    
       </div>
     );
 };

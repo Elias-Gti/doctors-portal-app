@@ -3,6 +3,8 @@
 1. Create React app
 2. install Tailwind css
 3. daisy ui install 
+4. install react-router-dom
+{npm install react-router-dom}
 
 
 ## Available Scripts

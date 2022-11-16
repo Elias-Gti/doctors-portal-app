@@ -11,7 +11,7 @@ const Banner = () => {
           <div className='w-1/2'>
             <h1 className="text-5xl font-bold">Box Office News!</h1>
             <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-            <button className="h-14 btn btn-primary text-white bg-gradient-to-r from-primary to-secondary">Get Started</button>
+            <button className="font-bold btn btn-primary text-white bg-gradient-to-r from-primary to-secondary">Get Started</button>
           </div>
         </div>
     

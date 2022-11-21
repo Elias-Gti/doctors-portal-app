@@ -24,3 +24,5 @@ const MakeAppointment = () => {
 };
 
 export default MakeAppointment;
+
+ 

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import bg from '../../../assets/images/bg.png';
 import chair from '../../../assets/images/chair.png';
 import { format } from 'date-fns';
 import { DayPicker } from 'react-day-picker';
 
 
-const AppointmentBanner = () => {
-    const [selectDate,setSelectedDate]=useState(new Date())
+const AppointmentBanner = ({selectDate,setSelectedDate}) => {
+    
     return (
         <div className="hero " style={{ backgroundImage: `url(${bg})` }}>
             <div className="hero-content flex-col py-20 lg:flex-row-reverse">

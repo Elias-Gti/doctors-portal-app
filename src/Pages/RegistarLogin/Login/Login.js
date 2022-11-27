@@ -1,11 +1,39 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 const Login = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const { loginUser } = useContext(AuthContext);
+    const [loginerror,setLoginerror]=useState('')
+
+    //privet route
+    const location = useLocation();
+    const navigate= useNavigate();
+
+    const from =location.state?.from?.pathname || '/';
+
+
     const handelLogin = data => {
         console.log(data);
+
+        loginUser(data.email,data.password)
+            .then(result => {
+                // Signed in 
+                toast.success('Successfully Login!')
+                const user = result.user;
+                console.log(user)
+                navigate(from,{replace:true});
+                // ...
+            })
+            .catch((error) => {
+                // const errorCode = error.code;
+                 const errorMessage = error.message;
+                console.log(error);
+                setLoginerror(errorMessage);
+            });
     }
 
 
@@ -32,12 +60,11 @@ const Login = () => {
 
                     {errors.password && <p className='text-rose-600 my-2' role="alert">{errors.password?.message}</p>}
 
+                    {/* custom error */}
+                    {loginerror && <p>{loginerror}</p>}
+
                     <label for="floating_repeat_password" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">password</label>
                 </div>
-
-
-
-
 
                 <input type="submit" className="text-white bg-primary hover:bg-secondary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-primary dark:focus:ring-secondary" />
             </form>

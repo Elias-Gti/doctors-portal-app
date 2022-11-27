@@ -1,13 +1,45 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm} from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 const Register = () => {
 
     const {register,handleSubmit,formState: { errors }}= useForm();
+    const {createUser,userInfo}=useContext(AuthContext);
+
     const handleSingup=(data)=>{
         console.log(data);
+        createUser(data.email,data.password)
+        .then((result) => {
+            // Signed in 
+            const user = result.user;
+            console.log(user);
+            toast.success('User create successfully')
+            // ...
+            const updateInfo={
+                displayName: data.name,
+            }
+
+            userInfo(updateInfo)
+            .then(() => {
+                // Profile updated!
+                // ...
+              }).catch((error) => {
+                // An error occurred
+                // ...
+              });
+          })
+          .catch((error) => {
+            // const errorCode = error.code;
+            // const errorMessage = error.message;
+            console.log(error);
+            // ..
+          });
     }
+
+    
 
     return (
         <div className='w-1/2 mx-auto bg-slate-50 my-8 border-solid border-2 drop-shadow-xl  rounded-md p-16'>
